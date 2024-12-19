@@ -1,0 +1,57 @@
+step 1: create ssh key of your local(laptop)
+#ssh-keygen -t rsa -b 4096 -f ~/.ssh/azure
+
+
+step 2: Add the SSH Private Key to the SSH Agent
+- Start the SSH agent:
+  #eval "$(ssh-agent -s)"
+
+- Add the private key:
+  #ssh-add ~/.ssh/azure
+
+
+Step 3: Add the SSH Public Key to Azure DevOps
+
+Step 4: Configure Git to Use SSH with Azure DevOps
+
+- Create or edit the SSH config file:
+  #nano ~/.ssh/config
+- Add the following configuration
+Host azure-devops
+    HostName ssh.dev.azure.com
+    User git
+    IdentityFile ~/.ssh/azure
+
+Test the connection:
+ssh -T git@ssh.dev.azure.com
+
+Step 5: Clone Your Azure DevOps Repository Using SSH
+git clone git@ssh.dev.azure.com:v3/Organization/Project/Repo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Why main Branch is Protected
+
+1. Prevent Accidental Changes
+2. Ensure Code Quality and Stability
+3. Facilitate Team Collaboration
+4. Maintain a Clear Project History
+5. Enhance Security
+6. Prevent Accidental Deletions
+
